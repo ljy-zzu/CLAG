@@ -1,0 +1,12 @@
+name: emotion-clag
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  - pytorch>=2.0
+  - pip:
+      - -r requirements.txt

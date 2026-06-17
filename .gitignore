@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+.venv/
+venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Data & weights (download separately)
+data/semeval/*.json
+data/goemotions/*.json
+checkpoints/roberta-large/
+checkpoints/Meta-Llama-3-8B-Instruct/
+checkpoints/**/*.bin
+checkpoints/**/*.safetensors
+
+# Experiment artifacts
+outputs/**/*
+!outputs/.gitkeep
+checkpoints/**/*
+!checkpoints/.gitkeep
+
+# Logs
+*.log
+nohup.out
+
+# OS
+.DS_Store
+Thumbs.db
