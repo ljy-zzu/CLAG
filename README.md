@@ -36,7 +36,7 @@ mkdir -p data/semeval checkpoints
 # copy 2018-E-c-En-{train,dev,test-gold}.json → data/semeval/
 # download roberta-large & Meta-Llama-3-8B-Instruct → checkpoints/
 
-# 3) Run SemEval BCE gen1pct experiment
+# 3) Run SemEval experiment
 bash scripts/train.sh
 
 # 4) Evaluate best checkpoint
