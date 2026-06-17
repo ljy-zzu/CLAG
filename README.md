@@ -8,15 +8,15 @@ project/
 ├── requirements.txt
 ├── environment.yml
 ├── configs/              # experiment hyperparameters
-│   ├── semeval.yaml      # ← main SemEval BCE gen1pct config
-│   └── goemotions.yaml   # GoEmotions template
+│   ├── semeval.yaml      
+│   └── goemotions.yaml   
 ├── src/
-│   ├── training/         # pipeline, agents, BERT train scripts
-│   ├── datasets/         # SemEval labels & I/O
-│   ├── models/           # semantic encoder
+│   ├── training/         # pipeline, agents, train scripts
+│   ├── datasets/         
+│   ├── models/           
 │   └── utils/            # config loader, QC helpers
 ├── scripts/
-│   ├── train.sh          # baseline + 6-round pipeline
+│   ├── train.sh          
 │   ├── evaluate.sh
 │   └── inference.sh
 ├── data/                 # datasets (not in repo)
@@ -33,8 +33,8 @@ conda env create -f environment.yml && conda activate emotion-clag
 
 # 2) Prepare data & models (see data/README.md)
 mkdir -p data/semeval checkpoints
-# copy 2018-E-c-En-{train,dev,test-gold}.json → data/semeval/
-# download roberta-large & Meta-Llama-3-8B-Instruct → checkpoints/
+# copy 2018-E-c-En-{train,dev,test-gold}.json
+# download roberta-large & Meta-Llama-3-8B-Instruct
 
 # 3) Run SemEval experiment
 bash scripts/train.sh
@@ -54,7 +54,7 @@ CONFIG=configs/semeval.yaml bash scripts/train.sh -- --dry-run
 1. **Analysis** — error-driven label quotas (~1% of train per round)
 2. **Generation** — Llama-3 target-conditioned tweets
 3. **Filtering** — fixed baseline classifier + semantic score, **top 60% per label**
-4. **Training** — RoBERTa-large fine-tune (BCE or ASL) + dual eval macro-F1 + early stop
+4. **Training** — RoBERTa-large fine-tune (BCE or ASL) + early stop
 
 ## Config
 
@@ -62,17 +62,12 @@ All knobs live in YAML. Example (`configs/semeval.yaml`):
 
 | Key | Value |
 |-----|-------|
-| `experiment.iter_train` | `bce` |
+| `experiment.iter_train` | `asl` |
 | `augmentation.gen_ratio` | `0.01` |
 | `augmentation.qc_keep_ratio` | `0.60` |
-| `training.epochs` | `4` |
-| `experiment.iterations` | `6` |
+| `training.epochs` | `5` |
 
-Switch to ASL: set `iter_train: asl_plain` (see `configs/goemotions.yaml` for GoEmotions defaults).
 
-## Citation
-
-Add your paper metadata here.
 
 ## License
 
