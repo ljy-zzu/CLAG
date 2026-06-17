@@ -1,10 +1,5 @@
 # CLAG: Closed-Loop LLM Augmentation for GoEmotions & SemEval
 
-Iterative data augmentation with **Llama-3** generation, **RoBERTa-large** QC, and multi-label fine-tuning.
-
-**Primary SemEval result:** `roberta-large-04-bce-plain-gen1pct`  
-Baseline test macro-F1 **0.608** → after 6 rounds **0.617** (BCE, gen1pct, per-label QC top-60%).
-
 ## Project layout
 
 ```
